@@ -8,6 +8,7 @@ export default function BrowseDoctors() {
   const [doctors, setDoctors] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const BaseUrl=import.meta.env.MODE==="development"? "http://localhost:5000":"/"
 
   const fetchDoctors = async () => {
     try {
@@ -54,7 +55,7 @@ export default function BrowseDoctors() {
               <img
                 src={
                   doc.userId?.profilePicture
-                    ? `http://localhost:5000${doc.userId.profilePicture}`
+                    ? `${BaseUrl}${doc.userId.profilePicture}`
                     : "/default-doctor.jpg"
                 }
                 alt={doc.userId?.name || "Doctor"}

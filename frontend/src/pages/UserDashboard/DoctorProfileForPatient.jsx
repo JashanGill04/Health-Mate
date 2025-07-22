@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 export default function DoctorProfile() {
   const { id } = useParams();
   const [doctor, setDoctor] = useState(null);
+  const BaseUrl=import.meta.env.MODE==="development"? "http://localhost:5000":"/"
 const navigate = useNavigate();
   const fetchDoctor = async () => {
     try {
@@ -34,7 +35,7 @@ const navigate = useNavigate();
         <img
           src={
             user?.profilePicture
-              ? `http://localhost:5000${user.profilePicture}`
+              ? `${BaseUrl}}${user.profilePicture}`
               : "/default-doctor.jpg"
           }
           alt={user?.name}
