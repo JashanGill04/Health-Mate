@@ -3,7 +3,7 @@ require('dotenv').config();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./src/config/db");
-const path =requrie("path");
+const path =require("path");
 const app = express();
 
 const authRoutes = require("./src/routes/auth");
@@ -13,9 +13,8 @@ const appointmentRoutes=require("./src/routes/appointments");
 const aiRoutes = require("./src/routes/ai");
 const eduRoutes=require("./src/routes/eduRoutes");
 const adminRoutes= require("./src/routes/admin");
-const { applyTimestamps } = require("./src/models/User");
 app.use(cors({
-  origin: "http://localhost:5173", // your frontend origin
+  origin: "http://localhost:5000", // your frontend origin
   credentials: true
 }));
 
