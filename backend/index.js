@@ -14,7 +14,7 @@ const aiRoutes = require("./src/routes/ai");
 const eduRoutes=require("./src/routes/eduRoutes");
 const adminRoutes= require("./src/routes/admin");
 app.use(cors({
-  origin: "http://localhost:5000", // your frontend origin
+  origin: "http://localhost:5173", // your frontend origin
   credentials: true
 }));
 
