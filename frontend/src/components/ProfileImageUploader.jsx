@@ -7,9 +7,7 @@ export default function ProfileImageUploader() {
   const [profileImage, setProfileImage] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const imageBaseURL = import.meta.env.MODE === "development"
-  ? "http://localhost:5000"
-  : "https://health-mate-hs63.onrender.com";
+  const imageBaseURL ="https://health-mate-hs63.onrender.com";
 
   useEffect(() => {
     const fetchImage = async () => {
