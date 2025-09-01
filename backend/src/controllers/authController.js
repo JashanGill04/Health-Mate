@@ -118,9 +118,14 @@ userId,{name,email,phone,gender,age,bio,conditions},
 }
 };
 
-const profilePicture=async (req, res) => {
+const profilePicture = async (req, res) => {
   try {
-    if (!req.file) return res.status(400).json({ message: "No image uploaded" });
+    console.log("User:", req.user);
+    console.log("File:", req.file);
+
+    if (!req.file) {
+      return res.status(400).json({ message: "No image uploaded" });
+    }
 
     const imagePath = `/uploads/${req.file.filename}`;
     const user = await User.findByIdAndUpdate(
@@ -129,12 +134,16 @@ const profilePicture=async (req, res) => {
       { new: true }
     ).select("-password");
 
-    res.json({ message: "Profile picture updated", profilePicture: user.profilePicture });
+    res.json({
+      message: "Profile picture updated",
+      profilePicture: user.profilePicture,
+    });
   } catch (err) {
     console.error("Upload error:", err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
 module.exports = {
   signup,
   login,
