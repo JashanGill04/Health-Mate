@@ -14,7 +14,7 @@ const aiRoutes = require("./src/routes/ai");
 const eduRoutes=require("./src/routes/eduRoutes");
 const adminRoutes= require("./src/routes/admin");
 app.use(cors({
-  origin: process.env.BASE_URL, // your frontend origin
+  origin: process.env.NODE_ENV=="development"? "http://localhost:5173":process.env.BASE_URL, // your frontend origin
   credentials: true
 }));
 

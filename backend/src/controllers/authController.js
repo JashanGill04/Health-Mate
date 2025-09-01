@@ -120,17 +120,16 @@ userId,{name,email,phone,gender,age,bio,conditions},
 
 const profilePicture = async (req, res) => {
   try {
-    console.log("User:", req.user);
-    console.log("File:", req.file);
-
     if (!req.file) {
       return res.status(400).json({ message: "No image uploaded" });
     }
 
-    const imagePath = `/uploads/${req.file.filename}`;
+    // Cloudinary URL comes from req.file.path
+    const imageUrl = req.file.path;
+
     const user = await User.findByIdAndUpdate(
       req.user._id,
-      { profilePicture: imagePath },
+      { profilePicture: imageUrl },
       { new: true }
     ).select("-password");
 
@@ -143,6 +142,7 @@ const profilePicture = async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+
 
 module.exports = {
   signup,
