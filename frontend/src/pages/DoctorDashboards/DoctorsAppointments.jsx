@@ -40,7 +40,14 @@ export default function DoctorsAppointment() {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
-  if (loading) return <p className="text-center">Loading appointments...</p>;
+if (loading) {
+  return (
+    <div className="flex justify-center items-center h-screen w-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
+    </div>
+  );
+}
+
 
   return (
     <DoctorLayout>

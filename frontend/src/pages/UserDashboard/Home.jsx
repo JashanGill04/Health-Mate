@@ -5,8 +5,14 @@ import DashboardLayout from "../../layouts/DashboardLayout";
 const Home = () => {
   const { authUser, authRole, isCheckingAuth } = useAuthStore();
 
-  if (isCheckingAuth)
-    return <div className="text-center mt-10 text-gray-300">Loading dashboard...</div>;
+if (isCheckingAuth) {
+  return (
+    <div className="flex justify-center items-center h-screen w-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
+    </div>
+  );
+}
+
 
   return (
     <div className="min-h-screen bg-slate-900 text-white">

@@ -116,7 +116,16 @@ export default function DoctorDashboard() {
     { total: 0, accepted: 0, pending: 0, rejected: 0, completed: 0 }
   );
 
-  if (isCheckingAuth) return <p>Loading...</p>;
+if (isCheckingAuth) {
+  return (
+    <div className="flex justify-center items-center h-screen w-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500"></div>
+    </div>
+  );
+}
+
+
+  
   if (authUser.role !== "doctor") return <p className="text-red-500">Access denied</p>;
 
   return (
